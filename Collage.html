@@ -62,13 +62,6 @@ window.addEventListener("click", function () {
     music.currentTime = 37;
 }, { once: true });
     music.play();
-    let fade = setInterval(() => {
-        if (music.volume < 0.5) {
-            music.volume += 0.05;
-        } else {
-            clearInterval(fade);
-        }
-    }, 200);
 </script>
 
 <body>
@@ -79,3 +72,4 @@ window.addEventListener("click", function () {
 </iframe>
 </body>
 </html>
+
