@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forever Yours</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+#music{
+    position:absolute;
+    width:0;
+    height:0;
+    border:0;
+}
+
+body{
+    height:100vh;
+    background: url("ss.png") no-repeat center center/cover;
+    font-family:'Playfair Display', serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    color:white;
+}
+
+
+.content{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    padding:20px;
+}
+
+h1{
+    font-size:3rem;
+    margin-bottom:20px;
+}
+
+p{
+    font-size:1.3rem;
+    letter-spacing:1px;
+}
+</style>
+</head>
+<audio id="bgMusic" loop>
+    <source src="Moves.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+window.addEventListener("click", function () {
+    const music = document.getElementById("bgMusic");
+    music.play();
+    music.currentTime = 37;
+}, { once: true });
+
+    music.play();
+</script>
+
+<body>
+<iframe 
+    id="music"
+    src="https://www.youtube.com/embed/6L4FzKpF3Gk?autoplay=1&loop=1&playlist=6L4FzKpF3Gk"
+    allow="autoplay">
+</iframe>
+</body>
+</html>
