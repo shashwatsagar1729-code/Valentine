@@ -3,80 +3,68 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Be My Valentine?</title>
+<title>For Maegan </title>
 
-<!-- Elegant Serif Font -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-body {
-    height: 100vh;
+body{
+    height:100vh;
     background: url("background.jpg") no-repeat center center/cover;
     font-family: 'Playfair Display', serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    position: relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    position:relative;
 }
 
-/* Soft overlay for readability */
-body::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(255, 255, 255, 0.55);
+body::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: rgba(255,255,255,0.55);
     backdrop-filter: blur(2px);
 }
 
-.container {
-    position: relative;
-    text-align: center;
-    z-index: 2;
+.container{
+    position:relative;
+    text-align:center;
+    z-index:2;
 }
 
-h1 {
-    font-size: 3rem;
-    color: #2f2f2f;
-    margin-bottom: 40px;
-    letter-spacing: 1px;
+h1{
+    font-size:3rem;
+    color:#2f2f2f;
+    margin-bottom:40px;
 }
 
-/* Vintage Button Style */
-button {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    padding: 12px 30px;
-    margin: 10px 20px;
-    border-radius: 40px;
-    border: 2px solid #3a3a3a;
-    background: rgba(255, 255, 255, 0.85);
-    color: #2f2f2f;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+button{
+    font-family:'Playfair Display', serif;
+    font-size:1.1rem;
+    padding:12px 30px;
+    margin:10px 20px;
+    border-radius:40px;
+    border:2px solid #3a3a3a;
+    background: rgba(255,255,255,0.9);
+    cursor:pointer;
+    transition:0.3s ease;
 }
 
-/* Vintage hover effect */
-button:hover {
-    background: #2f2f2f;
-    color: white;
+button:hover{
+    background:#2f2f2f;
+    color:white;
     transform: translateY(-3px);
 }
 
-/* Keep No button positioned absolute so it can teleport */
-#noBtn {
-    position: absolute;
-}
-
-#yesBtn {
-    position: relative;
+#noBtn{
+    position:absolute;
 }
 </style>
 </head>
@@ -85,7 +73,7 @@ button:hover {
 
 <div class="container">
     <h1>Will you be my Valentine?</h1>
-    <button id="yesBtn" onclick="alert('You just made my day ❤️')">Yes</button>
+    <button onclick="window.location.href='Collage.html'">Yes</button>
     <button id="noBtn">No</button>
 </div>
 
@@ -96,11 +84,8 @@ noBtn.addEventListener("mouseover", () => {
     const maxX = window.innerWidth - noBtn.offsetWidth;
     const maxY = window.innerHeight - noBtn.offsetHeight;
 
-    const randomX = Math.floor(Math.random() * maxX);
-    const randomY = Math.floor(Math.random() * maxY);
-
-    noBtn.style.left = randomX + "px";
-    noBtn.style.top = randomY + "px";
+    noBtn.style.left = Math.random() * maxX + "px";
+    noBtn.style.top = Math.random() * maxY + "px";
 });
 </script>
 
