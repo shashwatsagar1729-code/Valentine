@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden; /* Prevents scrollbars when button moves */
+            font-family: 'Playfair Display', serif;
+        }
+
+        .container {
+            /* Replace 'background.jpg' with the path to your actual image file */
+            background-image: url("D:\ Website\ background.jpg.jpg"); 
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: #1a1a1a;
+            margin-bottom: 50px;
+            font-weight: 400;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+        }
+
+        .buttons-container {
+            display: flex;
+            gap: 50px;
+            position: relative; /* Needed for absolute positioning of the 'No' button */
+            width: 100%;
+            justify-content: center;
+            height: 150px; /* Reserve space for buttons */
+        }
+
+        .envelope-btn {
+            width: 160px;
+            height: 100px;
+            background-color: #f3e5ab; /* Parchment color */
+            border: 1px solid #d4c59a;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            color: #3e3e3e;
+            transition: transform 0.2s ease;
+            user-select: none;
+            /* Creating the envelope flap look with gradients */
+            background-image: 
+                linear-gradient(to bottom right, transparent 50%, rgba(0,0,0,0.05) 50%),
+                linear-gradient(to bottom left, transparent 50%, rgba(0,0,0,0.05) 50%);
+        }
+
+        /* The Wax Seal */
+        .envelope-btn::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: #8b0000; /* Dark red wax */
+            border-radius: 50%;
+            top: 60%;
+            box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            border: 2px solid #a52a2a;
+        }
+
+        /* Hover effect for Yes button */
+        #yes-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* The teleporting No button */
+        #no-btn {
+            position: absolute; /* Allows us to move it anywhere */
+            transition: all 0.1s ease; /* Fast movement */
+        }
+
+        /* Success Message styling */
+        .success-message {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            font-size: 2rem;
+            color: #d6336c;
+            z-index: 10;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>will you be my valentine?</h1>
+        
+        <div class="buttons-container">
+            <div class="envelope-btn" id="yes-btn" onclick="acceptValentine()">
+                Yes
+            </div>
+            
+            <div class="envelope-btn" id="no-btn" onmouseover="teleportButton()">
+                No
+            </div>
+        </div>
+
+        <div class="success-message" id="success-msg">
+            
+        </div>
+    </div>
+
+    <script>
+        function teleportButton() {
+            const button = document.getElementById('no-btn');
+            const container = document.querySelector('.container');
+            
+            // Get window dimensions
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+            
+            // Get button dimensions
+            const btnWidth = button.offsetWidth;
+            const btnHeight = button.offsetHeight;
+
+            // Calculate random positions
+            // We subtract button dimensions to keep it inside the screen
+            const randomX = Math.random() * (windowWidth - btnWidth);
+            const randomY = Math.random() * (windowHeight - btnHeight);
+
+            // Apply new position
+            // We switch to 'fixed' positioning so it breaks out of the flex container layout visually
+            button.style.position = 'fixed'; 
+            button.style.left = randomX + 'px';
+            button.style.top = randomY + 'px';
+        }
+
+        function acceptValentine() {
+            const msg = document.getElementById('success-msg');
+            msg.style.display = 'block';
+            
+            // Optional: Hide the buttons after clicking yes
+            document.querySelector('.buttons-container').style.display = 'none';
+            document.querySelector('h1').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
